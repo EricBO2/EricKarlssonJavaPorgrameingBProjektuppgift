@@ -18,7 +18,7 @@ public class Kitchen implements Rooms {
     private Resident resident;                          //The resident is needed to pick upp items
 
     public Kitchen(Resident resident) {
-        places = new String[]{"stow", "conter"};
+        places = new String[]{"stow", "counter"};
         items = new Item[]{new FryingPan(), new Knife()};
         this.resident = resident;
     }
@@ -32,7 +32,7 @@ public class Kitchen implements Rooms {
                 option.add("pick up " + item.getName());
             }
         }
-        option.add("leave room");                           //Adds leave room to options
+        option.add(LEAVE);                           //Adds leave room to options
 
         surroundings();                                     //Describe the surroundings
         OutputHandler.printOptions("You can: ", option);    //Prints options
@@ -40,7 +40,7 @@ public class Kitchen implements Rooms {
         String input = InputHandler.getStringLowerCas();          //Get user input
 
 
-        if (input.equals("leave room")) {                         //Lets user leva the room
+        if (input.equals(LEAVE.toLowerCase())) {       //Lets user leva the room
             return Location.LIVLINGROOM;
         }
         for (int i = 0; i < items.length; i++) {                  //lets user pick upp item

@@ -65,10 +65,10 @@ public class Hallway implements Rooms {
 
             options.clear();
             options.add("Quit");
-            options.add("Leave room");
+            options.add(LEAVE);
             OutputHandler.printOptions("you kan", options);
             String input = InputHandler.getStringLowerCas();
-            if (input.equals("leave room")) {
+            if (input.equals(LEAVE.toLowerCase())) {
                 return Location.LIVLINGROOM;
             }
             if (input.equals("quit")) {

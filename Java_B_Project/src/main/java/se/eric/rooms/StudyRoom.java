@@ -22,7 +22,7 @@ public class StudyRoom implements Rooms{
         else {
             options.add("call the cops");
         }
-        options.add("leave room");                              //adds the option to leave the room
+        options.add(LEAVE);                                     //adds the option to leave the room
 
         surroundings();
         OutputHandler.printOptions("you kan", options);     //prints out the surrounding and your options
@@ -33,7 +33,7 @@ public class StudyRoom implements Rooms{
             System.out.println("you call the cops");                //the player calls the cops
             copsCalled = true;
         }
-        else if(input.equals("leave room")) {                    //the player leaves the room
+        else if(input.equals(LEAVE.toLowerCase())) {                    //the player leaves the room
             return Location.LIVLINGROOM;
         }
         else {

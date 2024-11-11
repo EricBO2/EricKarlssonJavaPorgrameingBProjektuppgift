@@ -1,13 +1,13 @@
 package se.eric.game;
 
 public enum Location {
-    BATHROOM("bathroom"),                           //Used as a variable to keep track of where the player is
-    HALLWAY("hallway"),
-    KITCHEN("kitchen"),
-    LIVLINGROOM("livingroom"),
-    STUDYROOM("studyroom"),
-    START("start"),
-    QUIT("quit");
+    BATHROOM("Bathroom"),                           //Used as a variable to keep track of where the player is
+    HALLWAY("Hallway"),
+    KITCHEN("Kitchen"),
+    LIVLINGROOM("Livingroom"),
+    STUDYROOM("Studyroom"),
+    START("Start"),
+    QUIT("Quit");
 
 
     private final String description;

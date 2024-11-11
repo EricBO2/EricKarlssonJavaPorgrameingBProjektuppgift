@@ -23,21 +23,27 @@ public class BathRoom implements Rooms{
         List<String> option = new ArrayList<>();    //list of options
 
         if (burglar.isAlive()) {
-            option.add("hide in tub");
+            option.add("Hide in tub");
         }
-        option.add("leave room");
+        else{
+            option.add("Lock in mirror");
+        }
+        option.add(LEAVE);
 
         surroundings();                             //Describe the bathroom
         OutputHandler.printOptions("You can: ", option);
 
         String input = InputHandler.getStringLowerCas();
-        if (input.equals("leave room")) {                       //leave room metod
+        if (input.equals(LEAVE.toLowerCase())) {                       //leave room metod
             return Location.LIVLINGROOM;
         }
         if (input.equals("hide in tub")&& burglar.isAlive()) {
             System.out.println("You hide in the tub");           //hide in the tub metod
             hide = true;
             return Location.QUIT;
+        }
+        if(input.equals("lock in mirror")&& !burglar.isAlive()) {       //Lock in mirror metod
+            System.out.println("You lock in mirror and something is not right");
         }
 
         return Location.BATHROOM;
@@ -46,7 +52,7 @@ public class BathRoom implements Rooms{
     @Override
     public void surroundings() {                                //Describe the bathroom
         OutputHandler.printSurroundings("bathroom");
-        System.out.print("there is a bathtub");
+        System.out.print("There a mirror and a bathtub");
         if (burglar.isAlive()){
             System.out.println(" the thief wood probably not lock in there");
         }

@@ -1,9 +1,6 @@
 package se.eric.game;
 
-import se.eric.item.Item;
-
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class OutputHandler {
 
@@ -18,13 +15,8 @@ public class OutputHandler {
             }
             input=InputHandler.getStringLowerCas();
             for(Location d:options){
-                if (d.toString().equals(input)) {
+                if (d.toString().toLowerCase().equals(input)) {
                     return d;
-                }
-            }
-            for(int i = 0;i< options.length;i++){
-                if (input.equals(i+1)) {
-                    return options[i];
                 }
             }
             System.out.println("invalid input");
@@ -32,10 +24,10 @@ public class OutputHandler {
         }
     }
 
-    public static void printOptions(String meseg, List<String> options) {       //Used to print out several different options
+    public static void printOptions(String message, List<String> options) {       //Used to print out several different options
         printDelay();
         System.out.println("------------------------------------------------------------------------------------------");
-        System.out.println(meseg);
+        System.out.println(message);
         for (int i = 0; i < options.size(); i++) {
             if (options.get(i) != null){
                 System.out.println(  "*:   " + options.get(i));
@@ -43,8 +35,7 @@ public class OutputHandler {
         }
     }
 
-    public static void printDelay()  {
-        System.out.println();
+    public static void printDelay()  {                              //Metods to stop repetition in code
         for (int i = 0; i < 4; i++) {
             System.out.print(".");
             try {
@@ -55,6 +46,7 @@ public class OutputHandler {
         }
         System.out.println();
     }
+
 
     public static void printSurroundings(String room){
         System.out.println("You are in the "+room+", you look around and you see");
