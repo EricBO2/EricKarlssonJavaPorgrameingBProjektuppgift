@@ -12,18 +12,21 @@ import java.util.List;
 public class Hallway implements Rooms {
     private Burglar burglar;
     private Resident resident;
+    private List<String> options;
 
     public Hallway(Burglar burglar, Resident resident) {
         this.burglar = burglar;                             //Instantiate the necessary variabel
         this.resident = resident;
+        this.options = new ArrayList<>();                   //Array white all options
+
     }
 
     @Override
     public Location enterRoom() {
-        List<String> options = new ArrayList<>();           //Array white all options
 
         surroundings();                                     //Describe the Hallway
 
+        options.clear();                                    //to clear for new options
         while (burglar.isAlive() && resident.isAlive()) {
             options.clear();
             options.add("Punch");

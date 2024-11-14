@@ -27,6 +27,8 @@ public class Game {
             };
         }
     }
+
+
     public static void quit(Resident resident, Burglar burglar, Rooms[] rooms){
 
         if (resident.isAlive()) {                                   //Checks if the resident is alive

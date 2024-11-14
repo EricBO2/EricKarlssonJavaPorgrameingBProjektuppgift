@@ -8,13 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudyRoom implements Rooms{
-    private boolean copsCalled = false;                         //A variable that remembers where or not the cops have been called or not
+    private boolean copsCalled;                         //A variable that remembers where or not the cops have been called or not
+    private List<String> options;                       //A list of all option the player has
 
+    public StudyRoom() {
+        copsCalled = false;
+        options = new ArrayList<>();
+    }
 
     @Override
     public Location enterRoom() {
 
-        List<String> options = new ArrayList<>();               //A list of all option the player has
+        options.clear();                                    //to clear for new options
 
         if (copsCalled) {                                       //if the cops have been called you don't get the option to
             System.out.println("you have called the cops");

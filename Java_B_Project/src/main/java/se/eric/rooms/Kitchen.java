@@ -16,26 +16,30 @@ public class Kitchen implements Rooms {
     private String[] places;                            //Saves the sports that items kan be in
     private Item[] items;                               //Saves all the items in the Kitchen
     private Resident resident;                          //The resident is needed to pick upp items
+    private List<String> options;
 
     public Kitchen(Resident resident) {
         places = new String[]{"stow", "counter"};
         items = new Item[]{new FryingPan(), new Knife()};
         this.resident = resident;
+        options = new ArrayList<>();                    //List of options
+
     }
 
     @Override
     public Location enterRoom() {
 
-        List<String> option = new ArrayList<>();            //List of options
+        options.clear();                                    //to clear for new options
+
         for (Item item : items) {
             if (item != null) {                             //Adds all items in the kitchen to the list of options
-                option.add("pick up " + item.getName());
+                options.add("pick up " + item.getName());
             }
         }
-        option.add(LEAVE);                           //Adds leave room to options
+        options.add(LEAVE);                           //Adds leave room to options
 
         surroundings();                                     //Describe the surroundings
-        OutputHandler.printOptions("You can: ", option);    //Prints options
+        OutputHandler.printOptions("You can: ", options);    //Prints options
 
         String input = InputHandler.getStringLowerCas();          //Get user input
 
@@ -56,7 +60,7 @@ public class Kitchen implements Rooms {
                 }
             }
         }
-        System.out.println("Sorry, that's not an option");      //In case of wrong input
+        System.out.println("Sorry, that's not an options");      //In case of wrong input
         return Location.KITCHEN;
     }
 

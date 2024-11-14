@@ -1,55 +1,54 @@
 package se.eric.models;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import se.eric.item.FryingPan;
 
 class EntityTest {
-    static Resident R;
-    static Burglar B;
+     Resident resident;
+     Burglar burglar;
 
     @BeforeEach
-    void setUp() {
-        R = new Resident("resident", 50, 5);
-        B = new Burglar("Burglar", 50, 10);
+     void setUp() {
+        resident = new Resident("resident", 50, 5);
+        burglar = new Burglar("Burglar", 50, 10);
     }
 
     @Test
     void testTackDamage() {
-        int maxHP = R.getHP();
-        R.tackDamage(5);
+        int maxHP = resident.getHP();
+        resident.tackDamage(5);
 
-        Assertions.assertEquals(R.getHP(), maxHP - 5);
+        Assertions.assertEquals(maxHP - 5, resident.getHP());
     }
 
     @Test
     void isAlive() {
-        R.tackDamage(10);
+        resident.tackDamage(10);
 
-        Assertions.assertTrue(R.isAlive());
+        Assertions.assertTrue(resident.isAlive());
     }
 
     @Test
     void isDead() {
-        R.tackDamage(100);
-        Assertions.assertFalse(R.isAlive());
+        resident.tackDamage(100);
+        Assertions.assertFalse(resident.isAlive());
     }
 
     @Test
     void attack() {
-        int maxHP = R.getHP();
-        B.switchItem(new FryingPan());
-        B.attack(R);
-        Assertions.assertEquals(maxHP -B.getItemDamage(), R.getHP());
+        int maxHP = resident.getHP();
+        burglar.switchItem(new FryingPan());
+        burglar.attack(resident);
+        Assertions.assertEquals(maxHP - burglar.getItemDamage(), resident.getHP());
     }
 
     @Test
     void punch() {
-        int maxHP = R.getHP();
-        B.punch(R);
-        Assertions.assertEquals(R.getHP(), maxHP - B.getBaseDamage());
+        int maxHP = resident.getHP();
+        burglar.punch(resident);
+        Assertions.assertEquals(resident.getHP(), maxHP - burglar.getBaseDamage());
 
     }
 }
